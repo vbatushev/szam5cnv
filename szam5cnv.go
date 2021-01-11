@@ -12,7 +12,7 @@ import (
 
 const (
 	appName = "sZam5 config converter"
-	appVer  = "1.0.0"
+	appVer  = "0.0.1"
 )
 
 // Set - ...
