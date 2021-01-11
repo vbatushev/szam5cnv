@@ -15,8 +15,8 @@ type config struct {
 	Initials         initials     `json:"initials"`
 	LastWord         bool         `json:"last_word"`
 	Measurements     measurements `json:"measurements"`
-	NoBreak          bool         `json:"nobreak"`
 	Monosyllabic     monosyllabic `json:"monosyllabic"`
+	NoBreak          bool         `json:"nobreak"`
 	Particle         particle     `json:"particle"`
 	Phone            bool         `json:"phone"`
 	PercentHairSpace bool         `json:"percent_hair_space"`

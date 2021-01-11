@@ -12,7 +12,7 @@ import (
 
 const (
 	appName = "sZam5 config converter"
-	appVer  = "0.0.1"
+	appVer  = "0.0.2"
 )
 
 // Set - ...
@@ -167,6 +167,70 @@ func buildConfig(f string, set Set) error {
 	cfg.Digital.Dash = set.DigitalDash
 	cfg.Digital.DashSpace = set.DigitalDashSpace
 	cfg.Digital.Minus = set.DigitalMinus
+
+	cfg.DigitalPlace.Enable = set.Razriad
+	cfg.DigitalPlace.Space = set.RazriadSpace
+	cfg.DigitalPlace.Exists = set.ExistRazriad
+
+	cfg.Ellipsis = set.Ellipsis
+
+	cfg.French.Enable = set.FrenchEnable
+	cfg.French.Space = set.FrenchSpace
+
+	cfg.Initials.Enable = set.Initials
+	cfg.Initials.Before = set.InitialsBefore
+	cfg.Initials.Between = set.InitialsBetween
+
+	cfg.LastWord = set.LastWord
+
+	cfg.Measurements.Abbrevation = set.MesSocr
+	cfg.Measurements.Space = set.MesSocrSpace
+	cfg.Measurements.List = set.MesSocrList
+
+	cfg.Monosyllabic.Enable = set.Monosyllabic
+	cfg.Monosyllabic.CaseSens = set.MonosyllabicCaseSens
+	cfg.Monosyllabic.List = set.MonosyllabicList
+	cfg.Monosyllabic.Regexp = set.MonosyllabicRegEx
+
+	cfg.NoBreak = set.NoBreak
+
+	cfg.Particle.Enable = set.Chast
+	cfg.Particle.List = set.ChastList
+	cfg.Particle.Regexp = set.ChastRegEx
+
+	cfg.Phone = set.Phone
+
+	cfg.PercentHairSpace = set.PercentHairSpace
+
+	cfg.Quotes.Enable = set.Quotes
+	cfg.Quotes.QuoteType = set.QuotesType
+
+	cfg.Removes.DoubleParagraphs = set.RemoveDoublePara
+	cfg.Removes.DoubleSpaces = set.RemoveDoubleSpaces
+	cfg.Removes.TabFirst = set.RemoveFirstTab
+	cfg.Removes.TabLast = set.RemoveLastTab
+
+	cfg.Slashes.Enable = set.Slashes
+	cfg.Slashes.HairSpace = set.SlashesHairSpace
+
+	cfg.Square = set.Square
+
+	cfg.WebNoBreak = set.WebNoBreak
+
+	cfg.Rules = make([]rule, len(set.Rule))
+	for i, r := range set.Rule {
+		rj := rule{
+			Find:         r.Find,
+			FindPref:     r.FindPref,
+			Change:       r.Change,
+			ChangePref:   r.ChangePref,
+			Footnote:     r.Footnote,
+			MasterPage:   r.MasterPage,
+			HiddenLayers: r.HiddenLayers,
+		}
+		rj.Enable = r.Enable
+		cfg.Rules[i] = rj
+	}
 
 	// Запись JSON
 	result, err := json.MarshalIndent(cfg, "", "  ")
